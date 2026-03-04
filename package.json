@@ -18,6 +18,12 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "example": "tsx examples/basic.ts",
+    "example:timing": "tsx examples/timing.ts",
+    "example:child": "tsx examples/child-loggers.ts",
+    "example:context": "tsx examples/context.ts",
+    "example:json": "tsx examples/json-output.ts",
+    "example:levels": "tsx examples/levels.ts",
+    "example:cli": "tsx examples/cli-progress.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -39,9 +45,7 @@
     "node": ">=18.0.0"
   },
   "packageManager": "npm@10.8.0",
-  "publishConfig": {
-    "provenance": true
-  },
+
   "devDependencies": {
     "@types/node": "25.3.3",
     "tsx": "4.0.0",
