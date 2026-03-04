@@ -17,7 +17,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "example": "tsx examples/basic.ts"
+    "example": "tsx examples/basic.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "logger",
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@types/node": "^25.3.3",
     "tsx": "^4.0.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "vitest": "^3.0.0"
   }
 }
