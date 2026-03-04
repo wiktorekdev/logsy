@@ -1,6 +1,6 @@
 {
   "name": "@wiktorekdev/logsy",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Zero-config, pretty terminal logger for Node.js",
   "type": "module",
   "main": "./dist/index.js",
@@ -37,14 +37,23 @@
     "typescript"
   ],
   "license": "MIT",
+  "author": "wiktorekdev <wiktorekdev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/wiktorekdev/logsy/issues"
+  },
+  "homepage": "https://github.com/wiktorekdev/logsy#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wiktorekdev/logsy.git"
+    "url": "git+https://github.com/wiktorekdev/logsy.git"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "packageManager": "npm@10.8.0",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wiktorekdev"
+  },
 
   "devDependencies": {
     "@types/node": "25.3.3",
