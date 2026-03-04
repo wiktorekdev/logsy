@@ -31,10 +31,21 @@
     "typescript"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wiktorekdev/logsy.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "npm@10.8.0",
+  "publishConfig": {
+    "provenance": true
+  },
   "devDependencies": {
-    "@types/node": "^25.3.3",
-    "tsx": "^4.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^3.0.0"
+    "@types/node": "25.3.3",
+    "tsx": "4.0.0",
+    "typescript": "5.4.0",
+    "vitest": "3.0.0"
   }
 }
