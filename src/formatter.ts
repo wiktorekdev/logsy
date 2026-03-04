@@ -1,23 +1,14 @@
 import { ansi, colorize, strip, hex } from "./ansi.js";
 import type { LogEntry, LogLevel } from "./types.js";
 
-// Each level gets an icon + color pair. The icon column is fixed-width so
-// messages align regardless of level name length.
-const LEVEL_CONFIG: Record<LogLevel, { icon: string; label: string; color: string }> = {
-  debug: { icon: "●", label: "debug", color: hex("#6b7280") },
-  info: { icon: "ℹ", label: "info", color: hex("#38bdf8") },
-  success: { icon: "✔", label: "success", color: hex("#4ade80") },
-  warn: { icon: "⚠", label: "warning", color: hex("#fbbf24") },
-  error: { icon: "✖", label: "error", color: hex("#f87171") },
-  fatal: { icon: "✖", label: "fatal", color: hex("#f87171") },
+const LEVEL_CONFIG: Record<LogLevel, { icon: string; color: string }> = {
+  debug: { icon: "•", color: hex("#6b7280") },
+  info: { icon: "ℹ", color: hex("#3b82f6") },
+  success: { icon: "✔", color: hex("#22c55e") },
+  warn: { icon: "⚠", color: hex("#f59e0b") },
+  error: { icon: "✖", color: hex("#ef4444") },
+  fatal: { icon: "✖", color: hex("#dc2626") },
 };
-
-function formatTimestamp(date: Date): string {
-  const h = date.getHours().toString().padStart(2, "0");
-  const m = date.getMinutes().toString().padStart(2, "0");
-  const s = date.getSeconds().toString().padStart(2, "0");
-  return `${h}:${m}:${s}`;
-}
 
 function formatData(data: unknown): string {
   if (data instanceof Error) {
@@ -31,24 +22,20 @@ function formatData(data: unknown): string {
 
 export function format(entry: LogEntry, noColor = false, timestamps = true): string {
   const cfg = LEVEL_CONFIG[entry.level];
+  const parts: string[] = [];
 
-  const tsCol = timestamps ? colorize(formatTimestamp(entry.timestamp), ansi.dim, ansi.gray) + " " : "";
-
-  let prefixCol = "";
   if (entry.prefix) {
-    prefixCol = colorize(`[${entry.prefix}]`, ansi.gray) + colorize(" › ", ansi.dim, ansi.gray);
-  } else if (timestamps) {
-    prefixCol = colorize("› ", ansi.dim, ansi.gray);
+    parts.push(colorize(`[${entry.prefix}]`, ansi.gray));
   }
 
-  const badgeIcon = colorize(cfg.icon, cfg.color);
-  const badgeLabel = colorize(cfg.label.padEnd(7), ansi.underline, cfg.color);
-  const badge = `${badgeIcon} ${badgeLabel}`;
+  parts.push(colorize(cfg.icon, cfg.color));
+  parts.push(entry.message);
 
-  const extra = entry.data !== undefined ? colorize(formatData(entry.data), ansi.gray) : "";
+  if (entry.data !== undefined) {
+    parts.push(colorize(formatData(entry.data), ansi.gray));
+  }
 
-  const line = `${tsCol}${prefixCol}${badge}  ${entry.message}${extra}`;
-
+  const line = parts.join(" ");
   return noColor ? strip(line) : line;
 }
 

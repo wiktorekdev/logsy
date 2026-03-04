@@ -10,7 +10,7 @@ export class Logger {
     this.options = {
       level: options.level ?? "debug",
       prefix: options.prefix ?? "",
-      timestamps: options.timestamps ?? true,
+      timestamps: options.timestamps ?? false,
       noColor: options.noColor ?? (!process.stdout.isTTY && !process.env.FORCE_COLOR),
       json: options.json ?? false,
       context: options.context ?? {},
