@@ -31,7 +31,7 @@ export class Logger {
       data,
     };
 
-    const line = format(entry, this.options.noColor);
+    const line = format(entry, this.options.noColor, this.options.timestamps);
 
     // errors go to stderr, everything else to stdout
     if (level === "error") {

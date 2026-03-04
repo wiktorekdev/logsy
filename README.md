@@ -18,7 +18,7 @@ npm install @wiktorekdev/logsy
 ## Usage
 
 ```ts
-import { logger } from "logsy";
+import { logger } from "@wiktorekdev/logsy";
 
 logger.info("Server started", { port: 3000 });
 logger.success("Database connected");
@@ -30,7 +30,7 @@ logger.debug("Incoming request", { method: "GET", path: "/" });
 ### Per-module loggers
 
 ```ts
-import { Logger } from "logsy";
+import { Logger } from "@wiktorekdev/logsy";
 
 const db  = new Logger({ prefix: "db" });
 const bot = new Logger({ prefix: "bot" });
