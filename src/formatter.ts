@@ -24,7 +24,7 @@ function formatData(data: unknown): string {
     return `\n    ${data.stack ?? data.message}`;
   }
   if (typeof data === "object" && data !== null) {
-    return "\n    " + JSON.stringify(data, null, 2).replace(/\n/g, "\n    ");
+    return " " + JSON.stringify(data);
   }
   return ` ${String(data)}`;
 }
