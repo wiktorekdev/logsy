@@ -12,7 +12,7 @@ Zero-config, pretty terminal logger for Node.js. Works in Express APIs, Discord 
 ## Install
 
 ```sh
-npm install logsy
+npm install @wiktorekdev/logsy
 ```
 
 ## Usage
