@@ -28,7 +28,7 @@ export function format(entry: LogEntry, noColor = false, timestamps = true): str
     parts.push(colorize(`[${entry.prefix}]`, ansi.gray));
   }
 
-  parts.push(colorize(cfg.icon, cfg.color));
+  parts.push(colorize(cfg.icon.padEnd(2), cfg.color));
   parts.push(entry.message);
 
   if (entry.data !== undefined) {
